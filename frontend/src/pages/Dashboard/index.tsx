@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { selectUser, logout } from '../../store/slices/authSlice';
-import { selectPermissions } from '../../store/slices/permissionsSlice';
+import { useAppDispatch } from '../../store/hooks';
+import { logout } from '../../store/slices/authSlice';
 import { dashboardApi } from '../../services/api';
 import { DashboardStats, RecentOrder } from '../../types/api';
 import { Spinner } from '../../components/Spinner';
@@ -33,12 +32,9 @@ import {
   TableHeader,
   TableCell,
   StatusBadge,
-  ChartSection,
 } from './styles';
 
 const Dashboard = () => {
-  const user = useAppSelector(selectUser);
-  const permissions = useAppSelector(selectPermissions);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);

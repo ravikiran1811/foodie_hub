@@ -80,7 +80,7 @@ export const selectHasPermission = (feature: FeatureKey) => (state: RootState): 
   if (!categoryPermissions) return false;
 
   // Check if the specific action is allowed
-  return Boolean(categoryPermissions[config.action]);
+  return Boolean(categoryPermissions[config.action as keyof typeof categoryPermissions]);
 };
 
 /**

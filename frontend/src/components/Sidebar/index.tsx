@@ -36,7 +36,6 @@ const Sidebar = () => {
 
   // Permission checks
   const { hasPermission: canManageRestaurants } = usePermission(FeatureKey.MANAGE_RESTAURANTS);
-  const { hasPermission: canManageMenuItems } = usePermission(FeatureKey.MANAGE_MENU_ITEMS);
   const { hasPermission: canViewOrders } = usePermission(FeatureKey.VIEW_ORDERS);
   const { hasPermission: canManagePermissions } = usePermission(FeatureKey.MANAGE_PERMISSIONS);
   const { hasPermission: canManageAPI } = usePermission(FeatureKey.MANAGE_API);
