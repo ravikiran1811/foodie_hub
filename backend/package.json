@@ -47,5 +47,11 @@
     "prettier": "^3.1.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
+  },
+  "overrides": {
+    "ajv": "8.17.1",
+    "ajv-keywords": {
+      "ajv": "8.17.1"
+    }
   }
 }
