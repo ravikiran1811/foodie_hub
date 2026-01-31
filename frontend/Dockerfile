@@ -21,9 +21,16 @@ FROM nginx:alpine
 # Copy built files from builder
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Copy nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copy nginx configuration template
+COPY nginx.conf /etc/nginx/templates/default.conf.template
 
-EXPOSE 80
+# Install gettext for envsubst
+RUN apk add --no-cache gettext
 
-CMD ["nginx", "-g", "daemon off;"]
+# Set default port
+ENV PORT=8080
+
+EXPOSE $PORT
+
+# Start nginx with dynamic port
+CMD /bin/sh -c "envsubst '\$PORT' < /etc/nginx/templates/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
