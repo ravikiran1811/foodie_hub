@@ -1,18 +1,13 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
-import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // Enable CORS
   app.enableCors({
-    origin: [
-      'http://localhost:3000',
-      'https://foodiehub-frontend-production.up.railway.app',
-      /\.railway\.app$/
-    ],
+    origin: true,
     credentials: true,
   });
 
